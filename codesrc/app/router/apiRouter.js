@@ -1,8 +1,7 @@
 const Router = require('koa-router');   
+const apiController = require('../controller/api');
 
 let router = new Router();
-router.get('/', async (ctx, next) => {
-    ctx.body = 'Hello, koa';
-})
+router.get('/', apiController.getMenus);
 
 module.exports = router;

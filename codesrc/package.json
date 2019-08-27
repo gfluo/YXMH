@@ -11,6 +11,7 @@
   "dependencies": {
     "koa": "^2.8.1",
     "koa-log4": "^2.3.2",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "request": "^2.88.0"
   }
 }
