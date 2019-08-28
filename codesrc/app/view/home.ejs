@@ -14,14 +14,19 @@
     </style>
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/resizeFontSize.js"></script>
+    <script src="/js/logic.js"></script>
 </head>
 
 <body>
     <div class="header-navs">
-        <span class="nav-li active">全部</span>
         <% for(let i in menus){ %>
-        <span class="nav-li"><%= menus[i].name %></span>
+            <% if (fid == menus[i].fid) { %>
+                <span class="nav-li active" id=<%= menus[i].fid %> ><%= menus[i].name %></span>
+            <% } else { %>
+                <span class="nav-li" id=<%= menus[i].fid %> ><%= menus[i].name %></span>
+            <% } %>
         <% } %>
         <span class="nav-li">联系我们</span>
     </div>

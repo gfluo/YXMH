@@ -6,24 +6,40 @@ const { logger, accessLogger } = require('../log');
 class Main {
     static async getMenus(ctx, next) {
         try {
+            const { fid } = ctx.params;
             let body = await request.get(util.createTopUrl(config.domain.uri, config.domain.fid));
             body = JSON.parse(body);
             if (body.Variables.sublist.length) {    ///如果有子菜单.当前fid是获取公司名目
-                const sublist = body.Variables.sublist;
+                let sublist = body.Variables.sublist;
+                sublist = [{fid: config.domain.fid, name: '全部'}].concat(sublist);
+
                 let articles = [];
-                for (let i = 0; i < sublist.length; i++) {
-                    let subBody = await request.get(util.createTopUrl(config.domain.uri, sublist[i].fid));
+                if (fid == config.domain.fid) { //如果是all
+                    for (let i = 0; i < sublist.length; i++) {
+                        let subBody = await request.get(util.createTopUrl(config.domain.uri, sublist[i].fid));
+                        subBody = JSON.parse(subBody);
+                        articles = articles.concat(subBody.Variables.forum_threadlist);
+                    }
+                } else {
+                    let subBody = await request.get(util.createTopUrl(config.domain.uri, fid));
                     subBody = JSON.parse(subBody);
                     articles = articles.concat(subBody.Variables.forum_threadlist);
                 }
 
-                await ctx.render('home', {
+                let renderData =  {
                     title: body.Variables.forum.name,
-                    menus: sublist,
-                    allArticles: articles
-                });
-            }
+                    menus: sublist, 
+                    allArticles: articles,
+                    fid : fid
+                }
 
+                if (fid == config.domain.fid) {
+                    renderData.allShow = 'allShow';
+                }
+
+                await ctx.render('home', renderData);
+            }
+            
             ///ctx.body = 'Hello';
         } catch (e) {
             logger.error(e.message);
