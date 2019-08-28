@@ -4,4 +4,17 @@ $(document).ready(() => {
 
         window.location.href = `/api/${fid}`;
     })
+
+    $(window).scroll(function(){
+ 
+        var scrollH = document.documentElement.scrollHeight;
+
+        var clientH = document.documentElement.clientHeight;
+        if (scrollH == (document.documentElement.scrollTop | document.body.scrollTop) + clientH){
+            //加载新数据
+
+            alert("加载新数据");
+
+        }
+    });
 })
