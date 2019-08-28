@@ -10,9 +10,17 @@ class Main {
             body = JSON.parse(body);
             if (body.Variables.sublist.length) {    ///如果有子菜单.当前fid是获取公司名目
                 const sublist = body.Variables.sublist;
+                let articles = [];
+                for (let i = 0; i < sublist.length; i++) {
+                    let subBody = await request.get(util.createTopUrl(config.domain.uri, sublist[i].fid));
+                    subBody = JSON.parse(subBody);
+                    articles = articles.concat(subBody.Variables.forum_threadlist);
+                }
+
                 await ctx.render('home', {
                     title: body.Variables.forum.name,
-                    menus: sublist
+                    menus: sublist,
+                    allArticles: articles
                 });
             }
 

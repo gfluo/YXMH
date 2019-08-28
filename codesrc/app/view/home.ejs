@@ -1,51 +1,58 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>hello</title>
+    <title><%= title %></title>
     <style>
-      * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-      }
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
     </style>
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="/js/resizeFontSize.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="header-navs">
-      <span class="nav-li active">全部</span>
-      <span class="nav-li">工程案例</span>
-      <span class="nav-li">产品维护</span>
-      <span class="nav-li">公司动态</span>
-      <span class="nav-li">联系我们</span>
+        <span class="nav-li active">全部</span>
+        <% for(let i in menus){ %>
+        <span class="nav-li"><%= menus[i].name %></span>
+        <% } %>
+        <span class="nav-li">联系我们</span>
     </div>
     <div class="list-wrap">
-      <ul class="news-list">
-        <li>
-          <div class="thumbnail">
-            <img src="" alt="">
-          </div>
-          <div class="info">
-            <div class="title">这里是标题文字啊你看见没有呢这里是标题文字啊你看见没有呢</div>
-            <div class="mark-box"><span class="mark-li">已推荐</span></div>
-            <div class="more-info"><span class="date">2019-7-16 16:45</span><span class="viewer">浏览：38</span></div>
-          </div>
-        </li>
-        <li>
-            <div class="thumbnail">
-              <img src="" alt="">
-            </div>
-            <div class="info">
-              <div class="title">这里是标题文字啊你看见没有呢这里是标题文字啊你看见没有呢</div>
-              <div class="mark-box"><span class="mark-li">已推荐</span></div>
-              <div class="more-info"><span class="date">2019-7-16 16:45</span><span class="viewer">浏览：38</span></div>
-            </div>
-          </li>
-      </ul>
+        <ul class="news-list">
+            <% for(let i in allArticles){ %>
+            <li>
+                <div class="thumbnail">
+                    <img src="/image/avatar.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title"><%= allArticles[i].subject %></div>
+                    <div class="mark-box"><span class="mark-li">已推荐</span></div>
+                    <div class="more-info"><span class="date"><%= allArticles[i].lastpost %></span><span class="viewer">浏览：<%= allArticles[i].views %></span>
+                    </div>
+                </div>
+            </li>
+            <% } %>
+            <!--li>
+                <div class="thumbnail">
+                    <img src="" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">这里是标题文字啊你看见没有呢这里是标题文字啊你看见没有呢</div>
+                    <div class="mark-box"><span class="mark-li">已推荐</span></div>
+                    <div class="more-info"><span class="date">2019-7-16 16:45</span><span class="viewer">浏览：38</span>
+                    </div>
+                </div>
+            </li-->
+        </ul>
     </div>
-  </body>
+</body>
+
 </html>
