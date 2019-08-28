@@ -10,9 +10,13 @@ class Main {
             body = JSON.parse(body);
             if (body.Variables.sublist.length) {    ///如果有子菜单.当前fid是获取公司名目
                 const sublist = body.Variables.sublist;
+                await ctx.render('home', {
+                    title: body.Variables.forum.name,
+                    menus: sublist
+                });
             }
 
-            ctx.body = 'Hello';
+            ///ctx.body = 'Hello';
         } catch (e) {
             logger.error(e.message);
         }

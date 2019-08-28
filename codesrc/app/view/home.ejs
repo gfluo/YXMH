@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+
+<body>
+    <div class="top">
+        <ul>
+            <% for(let i in menus){ %>
+            <li><a href="#"><%= menus[i].name %></a></li>
+            <% } %>
+        </ul>
+    </div>
+
+</body>
+
+</html>
