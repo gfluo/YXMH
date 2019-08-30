@@ -36,18 +36,42 @@ class Main {
 
                     if (fid == config.domain.fid) {
                         renderData.allShow = 'allShow';
-                        if (body.Variables.forum_threadlist.length) {
-                            sublist.push({
-                                fid: '0',
-                                name: body.Variables.forum_threadlist[0].subject
-                            })
-                        }
+                    }
+
+                    if (body.Variables.forum_threadlist.length) {
+                        sublist.push({
+                            fid: '0',
+                            name: body.Variables.forum_threadlist[0].subject
+                        })
                     }
 
                     await ctx.render('home', renderData);
                 }
             } else {
+                let body = await request.get(util.createTopUrl(config.domain.uri, config.domain.fid));
+                body = JSON.parse(body);
+                if (body.Variables.sublist.length) {    ///如果有子菜单.当前fid是获取公司名目
+                    let sublist = body.Variables.sublist;
+                    sublist = [{ fid: config.domain.fid, name: '全部' }].concat(sublist);
+                    let renderData = {
+                        title: body.Variables.forum.name,
+                        menus: sublist,
+                        fid: fid
+                    }
 
+                    let article = await request.get('https://yuxi.shaobaogu.com.cn/api/mobile/index.php?version=4&module=viewthread&tid=3');
+                    article = JSON.parse(article);
+                    if (article.Variables.postlist.length) {
+                        renderData.cover = article.Variables.postlist[0].message;
+                    }
+
+                    sublist.push({
+                        fid: fid,
+                        name: body.Variables.forum_threadlist[0].subject
+                    })
+
+                    await ctx.render('cover', renderData);
+                }
             }
             ///ctx.body = 'Hello';
         } catch (e) {
