@@ -11,7 +11,7 @@ class Main {
             article = JSON.parse(article);
             if (article.Variables.postlist.length) {
                 let renderData =  {
-                    subTitle: article.Variables.forum.subject,
+                    subTitle: article.Variables.thread.subject,
                     article: article.Variables.postlist[0].message
                 }
 
@@ -80,7 +80,7 @@ class Main {
                     let article = await request.get(`https://yuxi.shaobaogu.com.cn/api/mobile/index.php?version=4&module=viewthread&tid=${tid}`);
                     article = JSON.parse(article);
                     if (article.Variables.postlist.length) {
-                        renderData.subTitle = article.Variables.forum.subject;
+                        renderData.subTitle = article.Variables.thread.subject;
                         renderData.cover = article.Variables.postlist[0].message;
                     }
 
