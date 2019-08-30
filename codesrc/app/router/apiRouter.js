@@ -3,9 +3,7 @@ const apiController = require('../controller/api');
 const config = require('../../config');
 
 let router = new Router();
-router.get(`/api`, (ctx, next) => {
-        ctx.redirect(`/api/${config.domain.fid}`);
-    })
+router.get('/', apiController.getMenus)
     .get(`/api/:fid`, apiController.getMenus)
     .get(`/article/:tid`, apiController.getArticle);
 

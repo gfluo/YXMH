@@ -24,6 +24,11 @@ class Main {
 
     static async getMenus(ctx, next) {
         try {
+            if (!ctx.params.fid) {
+                ctx.params = {
+                    fid: config.domain.fid
+                }
+            }
             const { fid } = ctx.params;
             if (fid != '0') {
                 let body = await request.get(util.createTopUrl(config.domain.uri, config.domain.fid));
