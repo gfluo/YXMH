@@ -11,6 +11,7 @@ class Main {
             article = JSON.parse(article);
             if (article.Variables.postlist.length) {
                 let renderData =  {
+                    
                     article: article.Variables.postlist[0].message
                 }
 
