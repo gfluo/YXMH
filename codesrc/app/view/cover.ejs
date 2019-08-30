@@ -11,10 +11,11 @@
             padding: 0;
             margin: 0;
         }
+
         .main {
-          padding: 0.25rem;
-          line-height: 0.6rem;
-          font-size: 0.4rem;
+            padding: 0.25rem;
+            line-height: 0.6rem;
+            font-size: 0.4rem;
         }
     </style>
     <link rel="stylesheet" href="/css/normalize.css">
@@ -27,16 +28,15 @@
 <body>
     <div class="header-navs">
         <% for(let i in menus){ %>
-            <% if (fid == menus[i].fid) { %>
-                <span class="nav-li active" id=<%= menus[i].fid %> ><%= menus[i].name %></span>
-            <% } else { %>
-                <span class="nav-li" id=<%= menus[i].fid %> ><%= menus[i].name %></span>
-            <% } %>
+        <% if (fid == menus[i].fid) { %>
+        <span class="nav-li active" id=<%= menus[i].fid %>><%= menus[i].name %></span>
+        <% } else { %>
+        <span class="nav-li" id=<%= menus[i].fid %>><%= menus[i].name %></span>
+        <% } %>
         <% } %>
     </div>
     <div class="main">
-        <h5><%= subTitle %></h5>
-        <br>
+        <p style="text-align:center"><%= subTitle %></p>
         <br>
         <%- cover %>
     </div>
