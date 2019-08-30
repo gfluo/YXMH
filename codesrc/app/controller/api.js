@@ -11,7 +11,7 @@ class Main {
             article = JSON.parse(article);
             if (article.Variables.postlist.length) {
                 let renderData =  {
-                    
+                    subTitle: article.Variables.forum.subject,
                     article: article.Variables.postlist[0].message
                 }
 
@@ -76,10 +76,11 @@ class Main {
                         menus: sublist,
                         fid: fid
                     }
-
-                    let article = await request.get('https://yuxi.shaobaogu.com.cn/api/mobile/index.php?version=4&module=viewthread&tid=3');
+                    let tid = body.Variables.forum_threadlist[0].tid;
+                    let article = await request.get(`https://yuxi.shaobaogu.com.cn/api/mobile/index.php?version=4&module=viewthread&tid=${tid}`);
                     article = JSON.parse(article);
                     if (article.Variables.postlist.length) {
+                        renderData.subTitle = article.Variables.forum.subject;
                         renderData.cover = article.Variables.postlist[0].message;
                     }
 
@@ -94,14 +95,6 @@ class Main {
             ///ctx.body = 'Hello';
         } catch (e) {
             logger.error(e.message);
-        }
-    }
-
-    static async loadArticle(ctx, next) {
-        try {
-            let body = await request.get('https://yuxi.shaobaogu.com.cn/api/mobile/index.php?version=4&module=viewthread&tid=3');
-        } catch (e) {
-
         }
     }
 }
