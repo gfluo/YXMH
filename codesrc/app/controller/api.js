@@ -4,6 +4,23 @@ const config = require('../../config');
 const { logger, accessLogger } = require('../log');
 
 class Main {
+    static async getArticle(ctx, next) {
+        try {
+            const { tid } = ctx.params;
+            let article = await request.get(`https://yuxi.shaobaogu.com.cn/api/mobile/index.php?version=4&module=viewthread&tid=${tid}`);
+            article = JSON.parse(article);
+            if (article.Variables.postlist.length) {
+                let renderData =  {
+                    article: article.Variables.postlist[0].message
+                }
+
+                await ctx.render('article', renderData);
+            }
+        } catch (e) {
+            logger.error(e);
+        }
+    }
+
     static async getMenus(ctx, next) {
         try {
             const { fid } = ctx.params;

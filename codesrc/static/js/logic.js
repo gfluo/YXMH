@@ -5,16 +5,9 @@ $(document).ready(() => {
         window.location.href = `/api/${fid}`;
     })
 
-    $(window).scroll(function(){
- 
-        var scrollH = document.documentElement.scrollHeight;
+    $('.info').click(function() {
+        let tid = $(this).attr("id");
 
-        var clientH = document.documentElement.clientHeight;
-        if (scrollH == (document.documentElement.scrollTop | document.body.scrollTop) + clientH){
-            //加载新数据
-
-            alert("加载新数据");
-
-        }
-    });
+        window.location.href = `/article/${tid}`;
+    })
 })

@@ -6,6 +6,7 @@ let router = new Router();
 router.get(`/api`, (ctx, next) => {
         ctx.redirect(`/api/${config.domain.fid}`);
     })
-    .get(`/api/:fid`, apiController.getMenus);
+    .get(`/api/:fid`, apiController.getMenus)
+    .get(`/article/:tid`, apiController.getArticle);
 
 module.exports = router;
