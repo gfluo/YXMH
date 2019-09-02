@@ -4,7 +4,7 @@ $(document).ready(() => {
         if (fid == 'allShow') {
             window.location.href = '/';
         } else
-            window.location.href = `/api/${fid}`;
+            window.location.href = `/list/${fid}`;
     })
 
     $('.nav-li-sub').click(function (self) {

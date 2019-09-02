@@ -4,7 +4,7 @@ const config = require('../../config');
 
 let router = new Router();
 router.get('/', apiController.topMenus)
-    .get(`/api/:fid`, apiController.topMenus)
+    .get(`/list/:fid`, apiController.topMenus)
     .get(`/article/:tid`, apiController.getArticle);
 
 module.exports = router;
