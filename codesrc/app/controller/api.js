@@ -14,10 +14,12 @@ class Main {
                 tid: tid,
                 subTitle: '',
                 article: '',
-                allShow: '',            };
+                allShow: '',
+            };
             let body = await request.get(util.createTopUrl(config.domain.uri, config.domain.fid));
             body = JSON.parse(body);
             let reqResult = body.Variables;
+            renderData.title = reqResult.forum.name;
             renderData.title = reqResult.forum.name;
             renderData.subMenus = reqResult.forum_threadlist;
             renderData.menus = reqResult.sublist;
@@ -50,6 +52,7 @@ class Main {
                 fid: fid,
                 subMenus: [],
                 tid: '',
+                uidPic: config.domain.uidPic
             };
 
             let body = await request.get(util.createTopUrl(config.domain.uri, config.domain.fid));
