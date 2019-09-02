@@ -7,6 +7,10 @@ body {
   text-align: center;
   background: #efefef;
   font-size: 14px;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 .header-navs .nav-li {
   margin: 0 0.125rem;
@@ -23,6 +27,10 @@ body {
 
 .header-navs .nav-li-sub.active {
   color: red;
+}
+
+.list-wrap {
+  padding-top: 1.125rem;
 }
 .news-list li {
   display: flex;
