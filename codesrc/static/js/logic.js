@@ -1,11 +1,18 @@
 $(document).ready(() => {
-    $('.nav-li').click(function(self) {
+    $('.nav-li').click(function (self) {
         let fid = $(this).attr("id");
-
-        window.location.href = `/api/${fid}`;
+        if (fid == 'allShow') {
+            window.location.href = '/';
+        } else
+            window.location.href = `/api/${fid}`;
     })
 
-    $('.info').click(function() {
+    $('.nav-li-sub').click(function (self) {
+        let tid = $(this).attr("id");
+        window.location.href = `/article/${tid}`;
+    })
+
+    $('.info').click(function () {
         let tid = $(this).attr("id");
 
         window.location.href = `/article/${tid}`;

@@ -15,6 +15,15 @@ body {
 .header-navs .nav-li.active {
   color: red;
 }
+
+.header-navs .nav-li-sub {
+  margin: 0 0.125rem;
+  font-weight: bold;
+}
+
+.header-navs .nav-li-sub.active {
+  color: red;
+}
 .news-list li {
   display: flex;
   box-sizing: border-box;
