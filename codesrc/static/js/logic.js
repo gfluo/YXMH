@@ -14,7 +14,16 @@ $(document).ready(() => {
 
     $('.info').click(function () {
         let tid = $(this).attr("id");
+        let fid = $('.nav-li.active').attr("id");
+        sessionStorage.setItem('fid', fid);
 
         window.location.href = `/article/${tid}`;
-    })
+    });
+
+    let fid = sessionStorage.getItem('fid');
+    if (fid) {
+        $(`#${fid}`).addClass('active');
+    }
+
+    sessionStorage.removeItem('fid');
 })
