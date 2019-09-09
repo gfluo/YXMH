@@ -20,28 +20,30 @@
 </head>
 
 <body>
-    <div class="header-navs">
-        <% if (allShow == 'allShow') { %>
-        <span class="nav-li active" id="allShow">全部</span>
-        <% } else { %>
-        <span class="nav-li" id="allShow">全部</span>
-        <% } %>
+    <div style="background: paleturquoise">
+        <div class="header-navs">
+            <% if (allShow == 'allShow') { %>
+            <span class="nav-li active" id="allShow">全部</span>
+            <% } else { %>
+            <span class="nav-li" id="allShow">全部</span>
+            <% } %>
 
-        <% for(let i in menus){ %>
-        <% if (fid == menus[i].fid) { %>
-        <span class="nav-li active" id=<%= menus[i].fid %>><%= menus[i].name %></span>
-        <% } else { %>
-        <span class="nav-li" id=<%= menus[i].fid %>><%= menus[i].name %></span>
-        <% } %>
-        <% } %>
+            <% for(let i in menus){ %>
+            <% if (fid == menus[i].fid) { %>
+            <span class="nav-li active" id=<%= menus[i].fid %>><%= menus[i].name %></span>
+            <% } else { %>
+            <span class="nav-li" id=<%= menus[i].fid %>><%= menus[i].name %></span>
+            <% } %>
+            <% } %>
 
-        <% for(let i in subMenus){ %>
-        <% if (tid == subMenus[i].tid) { %>
-        <span class="nav-li-sub active" id=<%= subMenus[i].tid %>><%= subMenus[i].subject %></span>
-        <% } else { %>
-        <span class="nav-li-sub" id=<%= subMenus[i].tid %>><%= subMenus[i].subject %></span>
-        <% } %>
-        <% } %>
+            <% for(let i in subMenus){ %>
+            <% if (tid == subMenus[i].tid) { %>
+            <span class="nav-li-sub active" id=<%= subMenus[i].tid %>><%= subMenus[i].subject %></span>
+            <% } else { %>
+            <span class="nav-li-sub" id=<%= subMenus[i].tid %>><%= subMenus[i].subject %></span>
+            <% } %>
+            <% } %>
+        </div>
     </div>
     <div class="list-wrap">
         <ul class="news-list">
