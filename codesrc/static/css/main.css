@@ -15,6 +15,7 @@ body {
 .header-navs .nav-li {
   margin: 0 0.125rem;
   font-weight: bold;
+  background: black;
 }
 .header-navs .nav-li.active {
   color: red;
