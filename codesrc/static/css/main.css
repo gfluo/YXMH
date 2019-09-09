@@ -17,7 +17,7 @@ body {
   font-weight: bold;
 }
 .header-navs .nav-li.active {
-  color: red;
+  color: white;
 }
 
 .header-navs .nav-li-sub {
