@@ -52,7 +52,7 @@ class Main {
                 fid: fid,
                 subMenus: [],
                 tid: '',
-                uidPic: config.domain.uidPic
+                uidPic: `${config.domain.uri}${config.domain.uidPic}`
             };
 
             let body = await request.get(util.createTopUrl(config.domain.uri, config.domain.fid));
