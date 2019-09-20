@@ -1,6 +1,6 @@
 const request = require('../util/request');
 const util = require('../util/util');
-const config = require('../../config');
+const config = global.config;
 const { logger, accessLogger } = require('../log');
 
 class Main {

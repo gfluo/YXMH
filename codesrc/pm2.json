@@ -1,0 +1,30 @@
+{
+    "apps": [
+        {
+            "name": "默认进程",
+            "script": "server.js",
+            "cwd": "./",
+            "args": "config/config.default.json",
+            "interpreter": "",
+            "interpreter_args": "",
+            "watch": true,
+            "ignore_watch": [
+                "node_modules",
+                "logs"
+            ]
+        },
+        {
+            "name": "copy进程1",
+            "script": "server.js",
+            "cwd": "./",
+            "args": "config/config.default1.json",
+            "interpreter": "",
+            "interpreter_args": "",
+            "watch": true,
+            "ignore_watch": [
+                "node_modules",
+                "logs"
+            ]
+        }
+    ]
+}
